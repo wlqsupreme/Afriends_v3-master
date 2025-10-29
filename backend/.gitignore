@@ -34,3 +34,6 @@ build/
 
 ### Q&A Files ###
 Q&A.txt
+
+### Configuration Files ###
+src/main/resources/application.properties
