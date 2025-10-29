@@ -1,0 +1,315 @@
+
+.school-certification-page {
+		min-height: 100vh;
+		background-color: #FFFFFF;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+}
+	
+	/* 状态栏 */
+.status-bar {
+		height: 1.375rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 1rem;
+		background-color: #FFFFFF;
+}
+.time {
+		font-size: 0.875rem;
+		color: #000000;
+		font-weight: 600;
+}
+.status-icons {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+}
+.signal, .wifi, .battery {
+		width: 0.75rem;
+		height: 0.75rem;
+		background-color: #000000;
+		border-radius: 0.125rem;
+}
+	
+	/* 头部导航 */
+.header {
+		height: 2.75rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 1rem;
+		border-bottom: 0.03125rem solid #F0F0F0;
+}
+.back-button {
+		width: 1.5rem;
+		height: 1.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+}
+.back-arrow {
+		width: 0;
+		height: 0;
+		border-right: 0.375rem solid #666666;
+		border-top: 0.25rem solid transparent;
+		border-bottom: 0.25rem solid transparent;
+}
+.page-title {
+		font-size: 1rem;
+		color: #333333;
+		font-weight: 600;
+}
+.placeholder {
+		width: 1.5rem;
+}
+	
+	/* 提示文字 */
+.prompt-text {
+		padding: 0.75rem 1rem;
+}
+.prompt {
+		font-size: 0.8125rem;
+		color: #999999;
+}
+	
+	/* 学校选择区域 */
+.school-selection {
+		padding: 0 1rem;
+}
+.selection-field {
+		height: 3.75rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 0.5rem;
+		border-bottom: 0.03125rem solid #F0F0F0;
+		cursor: pointer;
+}
+.selection-field:active {
+		background-color: #F8F8F8;
+}
+.field-label {
+		font-size: 0.875rem;
+		color: #333333;
+		font-weight: 500;
+}
+.selection-content {
+		display: flex;
+		align-items: center;
+}
+.placeholder-text {
+		font-size: 0.8125rem;
+		color: #CCCCCC;
+}
+.selected-text {
+		font-size: 0.8125rem;
+		color: #333333;
+}
+.loading-text {
+		font-size: 0.8125rem;
+		color: #999999;
+}
+	
+	/* 错误提示样式 */
+.error-section {
+		padding: 1rem;
+		background-color: #FFF2F0;
+		border: 0.03125rem solid #FFCCC7;
+		border-radius: 0.25rem;
+		margin: 0.5rem 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.5rem;
+}
+.error-icon {
+		font-size: 1.5rem;
+}
+.error-text {
+		font-size: 0.8125rem;
+		color: #FF4D4F;
+		text-align: center;
+		line-height: 1.5;
+}
+.retry-button {
+		padding: 0.5rem 1rem;
+		background-color: #FF4D4F;
+		border-radius: 0.25rem;
+		cursor: pointer;
+}
+.retry-button:active {
+		background-color: #D9363E;
+}
+.retry-text {
+		font-size: 0.75rem;
+		color: #FFFFFF;
+		font-weight: 500;
+}
+	
+	/* 协议同意区域 */
+.agreement-section {
+		flex: 1;
+		padding: 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+}
+.agreement-item {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+}
+.checkbox {
+		width: 1rem;
+		height: 1rem;
+		border: 0.0625rem solid #CCCCCC;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+}
+.checkbox.checked {
+		background-color: #007AFF;
+		border-color: #007AFF;
+}
+.checkmark {
+		color: #FFFFFF;
+		font-size: 0.625rem;
+		font-weight: bold;
+}
+.agreement-text {
+		font-size: 0.8125rem;
+		color: #666666;
+}
+.agreement-link {
+		font-size: 0.8125rem;
+		color: #007AFF;
+		text-decoration: underline;
+}
+	
+	/* 下一步按钮 */
+.next-button-section {
+		padding: 0 1rem 1rem;
+}
+.next-button {
+		height: 2.75rem;
+		background: linear-gradient(135deg, #FF69B4, #FF1493);
+		border-radius: 1.375rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transition: all 0.3s ease;
+}
+.next-button.disabled {
+		background: #CCCCCC;
+		cursor: not-allowed;
+}
+.next-button:active:not(.disabled) {
+		transform: scale(0.98);
+}
+.next-text {
+		font-size: 1rem;
+		color: #FFFFFF;
+		font-weight: 600;
+}
+	
+	/* 底部指示器 */
+.home-indicator {
+		height: 0.25rem;
+		background-color: #000000;
+		border-radius: 0.125rem;
+		margin: 1rem auto;
+		width: 3.75rem;
+}
+	
+	/* 学校选择弹窗 */
+.school-picker-modal {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(0, 0, 0, 0.5);
+		z-index: 1000;
+		display: flex;
+		align-items: flex-end;
+}
+.modal-content {
+		width: 100%;
+		background-color: #FFFFFF;
+		border-radius: 0.75rem 0.75rem 0 0;
+		max-height: 80vh;
+		overflow: hidden;
+}
+.modal-header {
+		height: 2.75rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 1rem;
+		border-bottom: 0.03125rem solid #F0F0F0;
+}
+.modal-back {
+		width: 1.5rem;
+		height: 1.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+}
+.modal-title {
+		font-size: 0.875rem;
+		color: #333333;
+		font-weight: 600;
+}
+.search-icon {
+		width: 1.5rem;
+		height: 1.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+}
+.magnifier {
+		width: 0.75rem;
+		height: 0.75rem;
+		border: 0.0625rem solid #666666;
+		border-radius: 50%;
+		position: relative;
+}
+.magnifier::after {
+		content: '';
+		position: absolute;
+		bottom: -0.1875rem;
+		right: -0.1875rem;
+		width: 0.375rem;
+		height: 0.0625rem;
+		background-color: #666666;
+		transform: rotate(45deg);
+}
+.school-list {
+		max-height: 60vh;
+		overflow-y: auto;
+}
+.school-item {
+		height: 3.125rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 1rem;
+		border-bottom: 0.03125rem solid #F0F0F0;
+		cursor: pointer;
+}
+.school-item:active {
+		background-color: #F8F8F8;
+}
+.province-name {
+		font-size: 0.875rem;
+		color: #333333;
+}
+.arrow-icon {
+		font-size: 0.875rem;
+		color: #CCCCCC;
+}

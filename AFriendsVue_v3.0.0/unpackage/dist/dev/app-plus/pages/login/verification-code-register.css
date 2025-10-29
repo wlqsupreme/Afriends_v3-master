@@ -1,0 +1,180 @@
+
+.verification-container[data-v-8bc8ce00] {
+  width: 100%;
+  height: 100vh;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 主内容区域 */
+.main-content[data-v-8bc8ce00] {
+  flex: 1;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.title[data-v-8bc8ce00] {
+  font-size: 48px;
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.instruction[data-v-8bc8ce00] {
+  font-size: 12px;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 40px;
+  line-height: 1.4;
+  max-width: 280px;
+}
+
+/* 验证码输入框 */
+.code-input-section[data-v-8bc8ce00] {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+  position: relative;
+}
+.code-input-field[data-v-8bc8ce00] {
+  width: 60px;
+  height: 60px;
+  background-color: #F8F8F8;
+  border: 2px solid #E0E0E0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.code-input-field.active[data-v-8bc8ce00] {
+  border-color: #EF0056;
+  background-color: #FFFFFF;
+}
+.code-digit[data-v-8bc8ce00] {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+}
+
+/* 隐藏的主输入框 */
+.main-input[data-v-8bc8ce00] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 1000;
+  background: transparent;
+  border: none;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+/* 重新输入手机号 */
+.change-phone-section[data-v-8bc8ce00] {
+  margin-bottom: 32px;
+  text-align: center;
+}
+.change-phone-link[data-v-8bc8ce00] {
+  font-size: 12px;
+  color: #0066CC;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* 重新发送选项 */
+.resend-section[data-v-8bc8ce00] {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+.resend-text[data-v-8bc8ce00] {
+  font-size: 12px;
+  color: #000000;
+}
+.resend-link[data-v-8bc8ce00] {
+  font-size: 12px;
+  color: #0066CC;
+  cursor: pointer;
+}
+
+/* 注册按钮 */
+.login-btn[data-v-8bc8ce00] {
+  width: 280px;
+  height: 48px;
+  background-color: #EF0056;
+  border: none;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.login-btn[data-v-8bc8ce00]:disabled {
+  background-color: #CCCCCC;
+  cursor: not-allowed;
+}
+.login-btn[data-v-8bc8ce00]:not(:disabled):active {
+  background-color: #D1004A;
+}
+.btn-text[data-v-8bc8ce00] {
+  font-size: 18px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+/* 响应式设计 */
+@media (max-width: 375px) {
+.main-content[data-v-8bc8ce00] {
+    padding: 30px 24px;
+}
+.title[data-v-8bc8ce00] {
+    font-size: 24px;
+}
+.instruction[data-v-8bc8ce00] {
+    font-size: 14px;
+    max-width: 240px;
+}
+.code-input-field[data-v-8bc8ce00] {
+    width: 50px;
+    height: 50px;
+}
+.code-digit[data-v-8bc8ce00] {
+    font-size: 20px;
+}
+.login-btn[data-v-8bc8ce00] {
+    width: 240px;
+}
+}
+@media (min-width: 414px) {
+.main-content[data-v-8bc8ce00] {
+    padding: 50px 40px;
+}
+.title[data-v-8bc8ce00] {
+    font-size: 32px;
+}
+.instruction[data-v-8bc8ce00] {
+    font-size: 18px;
+    max-width: 320px;
+}
+.code-input-field[data-v-8bc8ce00] {
+    width: 70px;
+    height: 70px;
+}
+.code-digit[data-v-8bc8ce00] {
+    font-size: 28px;
+}
+.login-btn[data-v-8bc8ce00] {
+    width: 320px;
+}
+}

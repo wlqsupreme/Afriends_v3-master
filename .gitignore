@@ -1,0 +1,31 @@
+# ---- OS ----
+.DS_Store
+Thumbs.db
+
+# ---- IDE ----
+.idea/
+*.iml
+
+# ---- Java/Maven ----
+backend/target/
+**/target/
+
+# ---- Node/Frontend ----
+**/node_modules/
+frontend/dist/
+frontend/.vite/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# ---- Env files (如果你会用到) ----
+**/.env
+**/.env.local
+**/.env.*.local
+
+# ---- Backend v2.0 ----
+backend_v2.0/
+
+# ---- Git submodules ----
+backend/Afriends/
+backend_v2.0/Afriends/

@@ -1,0 +1,334 @@
+
+.my-comments-page {
+		width: 100%;
+		min-height: 100vh;
+		background-color: #ffffff;
+		display: flex;
+		flex-direction: column;
+}
+	
+	/* 状态栏 */
+.status-bar {
+		height: 2.75rem;
+		background-color: #ffffff;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 1rem;
+}
+.time {
+		font-size: 0.875rem;
+		color: #000000;
+		font-weight: 600;
+}
+.status-icons {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+}
+.signal {
+		display: flex;
+		align-items: flex-end;
+		gap: 0.0625rem;
+		height: 0.625rem;
+}
+.bar {
+		width: 0.1875rem;
+		background-color: #000000;
+		border-radius: 0.0625rem;
+}
+.bar-1 {
+		height: 0.25rem;
+}
+.bar-2 {
+		height: 0.375rem;
+}
+.bar-3 {
+		height: 0.5rem;
+}
+.bar-4 {
+		height: 0.625rem;
+}
+.wifi {
+		font-size: 0.75rem;
+		color: #000000;
+}
+.battery {
+		display: flex;
+		align-items: center;
+		gap: 0.125rem;
+}
+.battery-body {
+		width: 1rem;
+		height: 0.5rem;
+		border: 0.0625rem solid #000000;
+		border-radius: 0.0625rem;
+		position: relative;
+}
+.battery-level {
+		position: absolute;
+		top: 0.0625rem;
+		left: 0.0625rem;
+		right: 0.0625rem;
+		bottom: 0.0625rem;
+		background-color: #000000;
+		border-radius: 0.03125rem;
+}
+.battery-tip {
+		width: 0.125rem;
+		height: 0.25rem;
+		background-color: #000000;
+		border-radius: 0 0.0625rem 0.0625rem 0;
+}
+	
+	/* 导航栏 */
+.nav-bar {
+		display: flex;
+		align-items: center;
+		padding: 0.625rem 1.25rem;
+		background-color: #ffffff;
+		border-bottom: 0.03125rem solid #f0f0f0;
+		position: relative;
+}
+.nav-left {
+		width: 1.875rem;
+		height: 1.875rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+}
+.back-arrow {
+		font-size: 1.5rem;
+		color: #999;
+		font-weight: bold;
+}
+.nav-center {
+		flex: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+}
+.nav-title {
+		font-size: 1.125rem;
+		font-weight: bold;
+		color: #333;
+}
+	
+	/* 评论容器 */
+.comments-container {
+		flex: 1;
+		background-color: #f8f8f8;
+		padding: 0.625rem 0;
+}
+	
+	/* 评论项 */
+.comment-item {
+		display: flex;
+		align-items: flex-start;
+		padding: 0.9375rem 1.25rem;
+		background-color: #ffffff;
+		margin-bottom: 0.625rem;
+}
+.comment-left {
+		flex: 1;
+		display: flex;
+		align-items: flex-start;
+		gap: 0.625rem;
+}
+.user-avatar {
+		width: 2.5rem;
+		height: 2.5rem;
+		flex-shrink: 0;
+}
+.cat-avatar {
+		width: 100%;
+		height: 100%;
+		position: relative;
+}
+.cat-body {
+		width: 1.875rem;
+		height: 1.5625rem;
+		background: linear-gradient(135deg, #FFA500, #FF8C00);
+		border-radius: 0.9375rem;
+		position: absolute;
+		top: 0.46875rem;
+		left: 0.3125rem;
+}
+.cat-face {
+		position: absolute;
+		top: 0.625rem;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 1.25rem;
+		height: 0.9375rem;
+}
+.cat-eyes {
+		display: flex;
+		justify-content: space-between;
+		gap: 0.25rem;
+}
+.cat-eye {
+		width: 0.1875rem;
+		height: 0.1875rem;
+		background-color: #000;
+		border-radius: 50%;
+}
+.comment-info {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+}
+.username {
+		font-size: 0.875rem;
+		color: #333;
+		font-weight: 600;
+}
+.timestamp {
+		font-size: 0.75rem;
+		color: #999;
+}
+.comment-text {
+		font-size: 0.875rem;
+		color: #333;
+		line-height: 1.4;
+		margin: 0.25rem 0;
+}
+.action-button {
+		margin-top: 0.25rem;
+}
+.like-icon {
+		font-size: 1rem;
+		color: #666;
+}
+.comment-right {
+		width: 3.75rem;
+		height: 3.75rem;
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+}
+.content-thumbnail {
+		width: 100%;
+		height: 100%;
+}
+.thumbnail-placeholder {
+		width: 100%;
+		height: 100%;
+		background-color: #f0f0f0;
+		border-radius: 0.25rem;
+		opacity: 0.7;
+}
+.cat-thumbnail {
+		background: linear-gradient(135deg, #FFB6C1, #FFC0CB);
+}
+	
+	/* 底部导航栏样式 */
+.bottom-navigation {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 3.75rem;
+		background-color: #FFFFFF;
+		border-top: 0.03125rem solid #F0F0F0;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		padding: 0 1rem;
+		z-index: 100;
+}
+.nav-item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.25rem;
+		cursor: pointer;
+		padding: 0.5rem;
+		border-radius: 0.375rem;
+		transition: all 0.2s ease;
+}
+.nav-item:active {
+		background-color: #F5F5F5;
+		transform: scale(0.95);
+}
+.nav-text {
+		font-size: 0.75rem;
+		color: #666666;
+		font-weight: 500;
+}
+.nav-item.active .nav-text {
+		color: #FF69B4;
+		font-weight: 600;
+}
+.ai-tab {
+		width: 1.5rem;
+		height: 1.5rem;
+		background: linear-gradient(135deg, #FF69B4, #FF8E53);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+}
+.ai-text {
+		font-size: 0.625rem;
+		color: #FFFFFF;
+		font-weight: 600;
+}
+.nav-avatar {
+		width: 1.5rem;
+		height: 1.5rem;
+}
+.avatar-small {
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		background: linear-gradient(135deg, #FFA500, #FF8C00);
+}
+.mini-cat-avatar {
+		width: 100%;
+		height: 100%;
+		position: relative;
+}
+.mini-cat-body {
+		width: 1.25rem;
+		height: 1rem;
+		background: linear-gradient(135deg, #FFA500, #FF8C00);
+		border-radius: 0.625rem;
+		position: absolute;
+		top: 0.25rem;
+		left: 0.125rem;
+}
+.mini-cat-face {
+		position: absolute;
+		top: 0.3125rem;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 0.75rem;
+		height: 0.625rem;
+}
+.mini-cat-eyes {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 0.125rem;
+}
+.mini-cat-eye {
+		width: 0.09375rem;
+		height: 0.09375rem;
+		background-color: #000;
+		border-radius: 50%;
+}
+	
+	/* 底部手势条 */
+.home-indicator {
+		position: fixed;
+		bottom: 4.375rem;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 3.75rem;
+		height: 0.1875rem;
+		background-color: #000;
+		border-radius: 0.09375rem;
+}

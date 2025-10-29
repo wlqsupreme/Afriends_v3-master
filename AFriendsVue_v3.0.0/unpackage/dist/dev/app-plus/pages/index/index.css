@@ -1,0 +1,193 @@
+
+.index-page {
+		min-height: 100vh;
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 1.875rem 1.25rem 1.25rem;
+}
+	
+	/* 应用头部 */
+.app-header {
+		text-align: center;
+		margin-bottom: 2.5rem;
+}
+.app-logo {
+		width: 6.25rem;
+		height: 2.5rem;
+		margin-bottom: 0.625rem;
+}
+.app-title {
+		font-size: 1.5rem;
+		color: #ffffff;
+		font-weight: bold;
+		display: block;
+		margin-bottom: 0.3125rem;
+		text-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.3);
+}
+.app-subtitle {
+		font-size: 0.875rem;
+		color: rgba(255, 255, 255, 0.8);
+		display: block;
+}
+	
+	/* 导航网格 */
+.navigation-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0.9375rem;
+		width: 100%;
+		margin-bottom: 1.875rem;
+}
+.nav-item {
+		background: rgba(255, 255, 255, 0.95);
+		border-radius: 0.625rem;
+		padding: 1.25rem 0.9375rem;
+		text-align: center;
+		box-shadow: 0 0.25rem 0.78125rem rgba(0, 0, 0, 0.1);
+		transition: all 0.3s ease;
+		cursor: pointer;
+}
+.nav-item:active {
+		transform: scale(0.95);
+		box-shadow: 0 0.125rem 0.46875rem rgba(0, 0, 0, 0.2);
+}
+.nav-icon {
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0 auto 0.625rem;
+}
+.login-icon {
+		background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+}
+.home-icon {
+		background: linear-gradient(135deg, #4ECDC4, #44A08D);
+}
+.chat-icon {
+		background: linear-gradient(135deg, #45B7D1, #96CEB4);
+}
+.ai-icon {
+		background: linear-gradient(135deg, #FF69B4, #FF1493);
+}
+.friend-icon {
+		background: linear-gradient(135deg, #FFD700, #FFA500);
+}
+.profile-icon {
+		background: linear-gradient(135deg, #9370DB, #8A2BE2);
+}
+.icon-text {
+		font-size: 1.25rem;
+}
+.nav-text {
+		font-size: 1rem;
+		color: #333333;
+		font-weight: 600;
+		display: block;
+		margin-bottom: 0.25rem;
+}
+.nav-desc {
+		font-size: 0.75rem;
+		color: #666666;
+		display: block;
+}
+	
+	/* 登录项特殊样式 */
+.login-item {
+		grid-column: 1 / -1;
+		background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+		color: white;
+}
+.login-item .nav-text,
+	.login-item .nav-desc {
+		color: white;
+}
+	
+	/* 快速功能区域 */
+.quick-actions {
+		width: 100%;
+		margin-bottom: 1.25rem;
+}
+.section-title {
+		font-size: 1rem;
+		color: rgba(255, 255, 255, 0.9);
+		font-weight: 600;
+		text-align: center;
+		margin-bottom: 0.9375rem;
+		text-shadow: 0 0.0625rem 0.125rem rgba(0, 0, 0, 0.3);
+}
+.action-buttons {
+		display: flex;
+		justify-content: space-around;
+		gap: 0.625rem;
+}
+.action-btn {
+		flex: 1;
+		background: rgba(255, 255, 255, 0.2);
+		border-radius: 0.46875rem;
+		padding: 0.9375rem 0.625rem;
+		text-align: center;
+		-webkit-backdrop-filter: blur(0.3125rem);
+		        backdrop-filter: blur(0.3125rem);
+		border: 0.03125rem solid rgba(255, 255, 255, 0.3);
+		transition: all 0.3s ease;
+		cursor: pointer;
+}
+.action-btn:active {
+		transform: scale(0.95);
+		background: rgba(255, 255, 255, 0.3);
+}
+.action-icon {
+		font-size: 1.125rem;
+		display: block;
+		margin-bottom: 0.3125rem;
+}
+.action-text {
+		font-size: 0.75rem;
+		color: rgba(255, 255, 255, 0.9);
+		font-weight: 500;
+}
+	
+	/* 底部信息 */
+.footer-info {
+		text-align: center;
+		margin-top: auto;
+}
+.version-text {
+		font-size: 0.75rem;
+		color: rgba(255, 255, 255, 0.7);
+		display: block;
+		margin-bottom: 0.3125rem;
+}
+.copyright-text {
+		font-size: 0.625rem;
+		color: rgba(255, 255, 255, 0.5);
+		display: block;
+}
+	
+	/* 响应式设计 */
+@media (max-width: 750rpx) {
+.navigation-grid {
+			gap: 0.625rem;
+}
+.nav-item {
+			padding: 0.9375rem 0.625rem;
+}
+.nav-icon {
+			width: 1.875rem;
+			height: 1.875rem;
+}
+.icon-text {
+			font-size: 1rem;
+}
+.nav-text {
+			font-size: 0.875rem;
+}
+.nav-desc {
+			font-size: 0.625rem;
+}
+}

@@ -1,0 +1,185 @@
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.privacy-settings[data-v-344a8419] {
+  min-height: 100vh;
+  background-color: #FAFAFA;
+}
+.nav-bar[data-v-344a8419] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 2.75rem;
+  padding: 0 1rem;
+  background-color: #ffffff;
+  border-bottom: 0.03125rem solid #efefef;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-left[data-v-344a8419] {
+  width: 1.875rem;
+  height: 1.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.back-arrow[data-v-344a8419] {
+  font-size: 1.5rem;
+  color: #000000;
+  font-weight: 300;
+  line-height: 1;
+}
+.nav-title[data-v-344a8419] {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #000000;
+}
+.nav-right[data-v-344a8419] {
+  width: 1.875rem;
+}
+.content[data-v-344a8419] {
+  flex: 1;
+  padding: 0;
+}
+.section[data-v-344a8419] {
+  background-color: #FFFFFF;
+  border-radius: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  border-bottom: 0.03125rem solid #efefef;
+}
+.section-header[data-v-344a8419] {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.5rem 1rem;
+  background-color: #FAFAFA;
+}
+.section-title[data-v-344a8419] {
+  font-size: 0.625rem;
+  /* 分类标题 10pt */
+  font-weight: 400;
+  color: #666666;
+  text-transform: uppercase;
+}
+.arrow-right[data-v-344a8419] {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.arrow-icon[data-v-344a8419] {
+  font-size: 1rem;
+  color: #000000;
+  font-weight: 300;
+}
+.section-content[data-v-344a8419] {
+  padding: 0;
+}
+.setting-info[data-v-344a8419] {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+.setting-desc[data-v-344a8419] {
+  font-size: 0.875rem;
+  /* 解释文字 14pt */
+  color: #666666;
+  line-height: 1.4;
+  font-weight: 400;
+}
+.setting-item[data-v-344a8419] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border-bottom: 0.03125rem solid #efefef;
+  background-color: #FFFFFF;
+}
+.setting-item[data-v-344a8419]:last-child {
+  border-bottom: none;
+}
+.setting-label[data-v-344a8419] {
+  font-size: 1rem;
+  /* 功能文字 16pt */
+  color: #000000;
+  font-weight: 400;
+}
+.toggle-switch[data-v-344a8419] {
+  width: 3.125rem;
+  height: 1.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.toggle-track[data-v-344a8419] {
+  width: 3.125rem;
+  height: 1.75rem;
+  background-color: #e5e5e5;
+  border-radius: 0.875rem;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+.toggle-track.active[data-v-344a8419] {
+  background-color: #007aff;
+}
+.toggle-thumb[data-v-344a8419] {
+  width: 1.625rem;
+  height: 1.625rem;
+  background-color: #ffffff;
+  border-radius: 0.8125rem;
+  position: absolute;
+  left: 0.0625rem;
+  top: 0.0625rem;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0.0625rem 0.25rem rgba(0, 0, 0, 0.1);
+}
+.toggle-thumb.active[data-v-344a8419] {
+  transform: translateX(1.375rem);
+}
+
+/* 响应式设计 */
+@media (max-width: 750rpx) {
+.content[data-v-344a8419] {
+    padding: 0.5rem;
+}
+.section[data-v-344a8419] {
+    margin-bottom: 0.5rem;
+}
+.section-header[data-v-344a8419] {
+    padding: 0.75rem 0.75rem 0.5rem;
+}
+.section-content[data-v-344a8419] {
+    padding: 0.5rem 0.75rem 0.75rem;
+}
+.setting-item[data-v-344a8419] {
+    padding: 0.625rem 0;
+}
+}

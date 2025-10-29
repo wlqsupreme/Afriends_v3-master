@@ -1,0 +1,137 @@
+
+.language-page {
+		width: 100%;
+		min-height: 100vh;
+		background-color: #f8f8f8;
+		display: flex;
+		flex-direction: column;
+}
+	
+	/* 导航栏 */
+.nav-bar {
+		height: 2.75rem;
+		background-color: #ffffff;
+		display: flex;
+		align-items: center;
+		padding: 0 1rem;
+		border-bottom: 0.03125rem solid #f0f0f0;
+}
+.nav-left {
+		width: 2.5rem;
+		height: 2.75rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		padding: 0 0.5rem;
+		z-index: 10;
+		position: relative;
+}
+.nav-left:active {
+		background-color: rgba(0, 0, 0, 0.1);
+}
+.back-arrow {
+		font-size: 1.5rem;
+		color: #333333;
+		font-weight: 300;
+}
+.nav-center {
+		flex: 1;
+		display: flex;
+		justify-content: center;
+}
+.nav-title {
+		font-size: 1rem;
+		color: #333333;
+		font-weight: 600;
+}
+.nav-right {
+		width: 2.5rem;
+}
+	
+	/* 内容区域 */
+.content-area {
+		flex: 1;
+		padding: 1rem 0;
+}
+	
+	/* 语言列表 */
+.language-list {
+		background-color: #ffffff;
+		margin-bottom: 1rem;
+}
+.language-item {
+		padding: 1rem;
+		border-bottom: 0.03125rem solid #f0f0f0;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		min-height: 2.75rem;
+		cursor: pointer;
+		transition: background-color 0.2s ease;
+}
+.language-item:last-child {
+		border-bottom: none;
+}
+.language-item:active {
+		background-color: rgba(0, 0, 0, 0.05);
+}
+.language-item.active {
+		background-color: rgba(0, 122, 255, 0.05);
+}
+.language-info {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+}
+.language-name {
+		font-size: 1rem;
+		color: #333333;
+		font-weight: 500;
+}
+.language-native {
+		font-size: 0.875rem;
+		color: #666666;
+}
+.language-check {
+		width: 1.5rem;
+		height: 1.5rem;
+		background-color: #007aff;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+}
+.check-icon {
+		font-size: 0.75rem;
+		color: #ffffff;
+		font-weight: 600;
+}
+	
+	/* 说明文字 */
+.language-note {
+		padding: 1rem;
+		background-color: #ffffff;
+}
+.note-text {
+		font-size: 0.875rem;
+		color: #999999;
+		line-height: 1.5;
+		text-align: center;
+}
+	
+	/* 底部手势条 */
+.home-indicator {
+		height: 2.125rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+}
+.home-indicator::after {
+		content: '';
+		width: 6.25rem;
+		height: 0.25rem;
+		background-color: #333333;
+		border-radius: 0.125rem;
+}

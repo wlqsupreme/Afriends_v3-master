@@ -1,0 +1,221 @@
+
+/* 全局样式已内联 */
+.login-container[data-v-38ba827d] {
+  width: 375px;
+  height: 812px;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.main-content[data-v-38ba827d] {
+  flex: 1;
+  padding: 0px 32px 20px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.app-header[data-v-38ba827d] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0px;
+  margin-top: 50px;
+}
+.app-logo[data-v-38ba827d] {
+  width: 240px;
+  height: 100px;
+  margin: 0;
+  padding: 0;
+  display: block;
+  box-sizing: border-box;
+  object-fit: contain;
+}
+.greeting-section[data-v-38ba827d] {
+  width: 100%;
+  max-width: 320px;
+  margin-bottom: 7px;
+  text-align: left;
+  padding-left: 0px;
+}
+.greeting-text[data-v-38ba827d] {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333333;
+  display: block;
+  margin-bottom: 8px;
+}
+.welcome-text[data-v-38ba827d] {
+  font-size: 12px;
+  color: #666666;
+  display: block;
+  line-height: 1.5;
+}
+.login-form[data-v-38ba827d] {
+  width: 100%;
+  max-width: 320px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.input-group[data-v-38ba827d] {
+  margin-bottom: 5px;
+}
+.input-label[data-v-38ba827d] {
+  font-size: 12px;
+  color: #666666;
+  display: block;
+  margin-bottom: 0px;
+  font-weight: 500;
+}
+.input-wrapper[data-v-38ba827d] {
+  position: relative;
+}
+.form-input[data-v-38ba827d] {
+  width: 100%;
+  height: 38px;
+  padding: 0 16px;
+  font-size: 16px;
+  color: #333333;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.placeholder[data-v-38ba827d] {
+  color: #999999;
+}
+.input-underline[data-v-38ba827d] {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #EF0056;
+}
+.form-input:focus + .input-underline[data-v-38ba827d] {
+  background-color: #EF0056;
+}
+.forgot-password[data-v-38ba827d] {
+  text-align: right;
+  margin-bottom: 5px;
+}
+.phone-login-option[data-v-38ba827d] {
+  text-align: center;
+  margin-bottom: 5px;
+}
+.option-text[data-v-38ba827d] {
+  font-size: 12px;
+  color: #1286DD;
+  cursor: pointer;
+}
+.third-party-login[data-v-38ba827d] {
+  margin-bottom: 100px;
+  text-align: center;
+  padding: 0 16px;
+}
+.section-title[data-v-38ba827d] {
+  font-size: 14px;
+  color: #666666;
+  margin-bottom: 20px;
+  display: block;
+}
+.social-icons[data-v-38ba827d] {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+.social-icon[data-v-38ba827d] {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.social-icon-img[data-v-38ba827d] {
+  width: 32px;
+  height: 32px;
+}
+.terms-section[data-v-38ba827d] {
+  text-align: center;
+  margin-bottom: 5px;
+  line-height: 1.5;
+  padding: 0 16px;
+}
+.terms-text[data-v-38ba827d] {
+  font-size: 12px;
+  color: #999999;
+}
+.terms-link[data-v-38ba827d] {
+  font-size: 12px;
+  color: #1286DD;
+  cursor: pointer;
+}
+.login-btn[data-v-38ba827d] {
+  width: 100%;
+  height: 44px;
+  background-color: #EF0056;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.btn-text[data-v-38ba827d] {
+  font-size: 16px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+.register-section[data-v-38ba827d] {
+  text-align: center;
+  padding: 0 16px;
+}
+.register-text[data-v-38ba827d] {
+  font-size: 14px;
+  color: #999999;
+}
+.register-link[data-v-38ba827d] {
+  font-size: 14px;
+  color: #1286DD;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+/* 响应式设计 */
+@media (max-width: 375px) {
+.main-content[data-v-38ba827d] {
+    padding: 0px 24px 20px 24px;
+}
+.app-logo[data-v-38ba827d] {
+    width: 200px;
+    height: 80px;
+    box-sizing: border-box;
+    object-fit: contain;
+}
+.greeting-section[data-v-38ba827d] {
+    max-width: 280px;
+}
+.login-form[data-v-38ba827d] {
+    max-width: 280px;
+}
+}
+@media (min-width: 414px) {
+.main-content[data-v-38ba827d] {
+    padding: 0px 40px 30px 40px;
+}
+.app-logo[data-v-38ba827d] {
+    width: 140px;
+    height: 50px;
+    box-sizing: border-box;
+    object-fit: contain;
+}
+.greeting-section[data-v-38ba827d] {
+    max-width: 360px;
+}
+.login-form[data-v-38ba827d] {
+    max-width: 360px;
+}
+}

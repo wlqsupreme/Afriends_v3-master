@@ -1,0 +1,517 @@
+
+.novel-detail-page {
+		min-height: 100vh;
+		background: linear-gradient(180deg, #FFFFFF 0%, #F8F8F8 100%);
+		display: flex;
+		flex-direction: column;
+}
+	
+	/* 状态栏 */
+.status-bar {
+		height: 1.375rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 1rem;
+		background-color: #FFFFFF;
+}
+.time {
+		font-size: 0.875rem;
+		color: #000000;
+		font-weight: 600;
+}
+.status-icons {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+}
+.signal, .wifi, .battery {
+		width: 0.75rem;
+		height: 0.75rem;
+		background-color: #000000;
+		border-radius: 0.125rem;
+}
+	
+	/* 头部导航 */
+.header {
+		height: 2.75rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 1rem;
+		border-bottom: 0.03125rem solid #F0F0F0;
+		background-color: #FFFFFF;
+		position: -webkit-sticky;
+		position: sticky;
+		top: 0;
+		z-index: 100;
+}
+.back-button {
+		width: 1.875rem;
+		height: 1.875rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #F5F5F5;
+		border-radius: 50%;
+}
+.back-arrow {
+		width: 0;
+		height: 0;
+		border-right: 0.375rem solid #333333;
+		border-top: 0.25rem solid transparent;
+		border-bottom: 0.25rem solid transparent;
+}
+.header-title {
+		flex: 1;
+		text-align: center;
+}
+.title-text {
+		font-size: 1rem;
+		color: #333333;
+		font-weight: 700;
+}
+.listen-button {
+		width: 2.5rem;
+		height: 2.5rem;
+		background: linear-gradient(135deg, #FF69B4, #FF8E53);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		box-shadow: 0 0.125rem 0.5rem rgba(255, 105, 180, 0.3);
+}
+.listen-text {
+		font-size: 0.875rem;
+		color: #FFFFFF;
+		font-weight: 600;
+}
+	
+	/* 主要内容区域 */
+.content-scroll {
+		flex: 1;
+		height: calc(100vh - 2.75rem);
+		background-color: transparent;
+}
+	
+	/* 返回按钮容器 */
+.back-button-container {
+		position: fixed;
+		top: 1.875rem;
+		left: 1rem;
+		z-index: 100;
+}
+.back-button {
+		width: 1.875rem;
+		height: 1.875rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: rgba(255, 255, 255, 0.9);
+		border-radius: 50%;
+		box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+.back-arrow {
+		width: 0;
+		height: 0;
+		border-right: 0.375rem solid #333333;
+		border-top: 0.25rem solid transparent;
+		border-bottom: 0.25rem solid transparent;
+}
+	
+	/* 小说封面 */
+.novel-cover-section {
+		padding: 1rem;
+		display: flex;
+		justify-content: center;
+}
+.novel-cover {
+		width: 10rem;
+		height: 13.125rem;
+		border-radius: 0.625rem;
+		background-color: #F5F5F5;
+		box-shadow: 0 0.375rem 1rem rgba(0, 0, 0, 0.15);
+		border: 0.125rem solid #FFFFFF;
+}
+	
+	/* 小说信息区域 */
+.novel-info-section { 
+		padding: 0.75rem 1rem; 
+		background-color: #FFFFFF;
+		margin: 0 1rem 0.75rem;
+		border-radius: 0.625rem;
+		box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.05);
+}
+.novel-title { 
+		font-size: 1.125rem; 
+		color: #333333; 
+		font-weight: 700; 
+		margin-bottom: 0.5rem; 
+		display: block; 
+		line-height: 1.4;
+}
+.author-section { 
+		display: flex; 
+		align-items: center; 
+		gap: 0.5rem; 
+		margin-top: 0.375rem;
+}
+.author-name { 
+		font-size: 0.875rem; 
+		color: #666666;
+}
+.follow-button { 
+		background: linear-gradient(135deg, #FF69B4, #FF8E53); 
+		padding: 0.375rem 0.75rem; 
+		border-radius: 0.75rem; 
+		box-shadow: 0 0.125rem 0.375rem rgba(255, 105, 180, 0.3);
+}
+.follow-text { 
+		font-size: 0.75rem; 
+		font-weight: 600; 
+		color: #FFFFFF;
+}
+	
+	/* 统计数据 */
+.stats-section { 
+		display: flex; 
+		justify-content: space-around; 
+		padding: 1rem; 
+		background-color: #F8F8F8; 
+		border-radius: 0.625rem; 
+		margin: 0 1rem 0.75rem; 
+		box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.05);
+}
+.stat-item { 
+		text-align: center; 
+		flex: 1;
+}
+.stat-value { 
+		font-size: 1rem; 
+		color: #FF6B35; 
+		font-weight: 700; 
+		display: block;
+		margin-bottom: 0.25rem;
+}
+.stat-label { 
+		font-size: 0.75rem; 
+		color: #999999; 
+		display: block;
+}
+	
+	/* 简介部分 */
+.synopsis-section { 
+		padding: 0.75rem 1rem; 
+		margin: 0 1rem 0.75rem;
+		background-color: #FFFFFF;
+		border-radius: 0.625rem;
+		box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.05);
+}
+.section-header { 
+		display: flex; 
+		justify-content: space-between; 
+		align-items: center; 
+		margin-bottom: 0.5rem;
+}
+.section-title { 
+		font-size: 1rem; 
+		color: #333333; 
+		font-weight: 600;
+}
+.tags-container { 
+		display: flex; 
+		flex-wrap: wrap; 
+		gap: 0.375rem; 
+		margin: 0.5rem 0;
+}
+.tag { 
+		background: linear-gradient(135deg, #FFE4E1, #FFF0F5); 
+		padding: 0.3125rem 0.625rem; 
+		border-radius: 0.75rem; 
+		box-shadow: 0 0.0625rem 0.25rem rgba(255, 107, 53, 0.2);
+}
+.tag-text { 
+		font-size: 0.75rem; 
+		color: #FF6B35;
+		font-weight: 500;
+}
+.synopsis-content { 
+		position: relative; 
+		margin-top: 0.5rem;
+}
+.synopsis-text { 
+		font-size: 0.875rem; 
+		color: #666666; 
+		line-height: 1.6; 
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+}
+.synopsis-text.expanded {
+		display: block;
+		-webkit-line-clamp: unset;
+		overflow: visible;
+}
+.expand-button { 
+		display: flex;
+		justify-content: flex-end;
+		margin-top: 0.5rem;
+}
+.expand-text { 
+		font-size: 0.875rem; 
+		color: #FF6B35; 
+		font-weight: 600;
+}
+	
+	/* 热门书评 */
+.reviews-section { 
+		padding: 0.75rem 1rem; 
+		margin: 0 1rem 0.75rem;
+		background-color: #FFFFFF;
+		border-radius: 0.625rem;
+		box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.05);
+}
+.more-reviews { 
+		display: flex; 
+		align-items: center; 
+		gap: 0.25rem; 
+		padding: 0.25rem 0.5rem;
+		background-color: #F5F5F5;
+		border-radius: 0.625rem;
+}
+.more-text { 
+		font-size: 0.8125rem; 
+		color: #FF6B35; 
+		font-weight: 600;
+}
+.reviews-list { 
+		display: flex; 
+		flex-direction: column; 
+		gap: 1rem; 
+		margin-top: 0.5rem;
+}
+.review-item { 
+		display: flex; 
+		flex-direction: column; 
+		gap: 0.5rem;
+}
+.review-header { 
+		display: flex; 
+		align-items: center; 
+		gap: 0.5rem;
+}
+.reviewer-avatar { 
+		width: 1.875rem; 
+		height: 1.875rem; 
+		border-radius: 0.9375rem; 
+		background-color: #F5F5F5; 
+		box-shadow: 0 0.0625rem 0.25rem rgba(0, 0, 0, 0.1);
+}
+.review-info { 
+		display: flex; 
+		flex-direction: column; 
+		gap: 0.125rem; 
+		flex: 1;
+}
+.reviewer-name { 
+		font-size: 0.875rem; 
+		color: #333333; 
+		font-weight: 600;
+}
+.review-rating { 
+		display: flex; 
+		gap: 0.125rem; 
+		margin-bottom: 0.125rem;
+}
+.star { 
+		font-size: 0.75rem; 
+		color: #FFD700;
+}
+.review-time { 
+		font-size: 0.75rem; 
+		color: #999999;
+}
+.review-content { 
+		font-size: 0.875rem; 
+		color: #333333; 
+		line-height: 1.6; 
+		margin-left: 2.375rem; 
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+}
+.review-content.expanded {
+		display: block;
+		-webkit-line-clamp: unset;
+		overflow: visible;
+}
+	
+	/* 书评互动区域 */
+.review-actions {
+		display: flex;
+		gap: 0.75rem;
+		margin-top: 0.5rem;
+		padding-top: 0.5rem;
+		border-top: 0.03125rem solid #F0F0F0;
+}
+.review-actions .action-item {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+}
+.review-actions .action-icon {
+		font-size: 0.875rem;
+		color: #666666;
+		transition: all 0.2s ease;
+}
+.review-actions .action-count {
+		font-size: 0.6875rem;
+		color: #666666;
+}
+.review-actions .action-icon.active {
+		color: #FFD700;
+		transform: scale(1.1);
+}
+.review-actions .action-count.active {
+		color: #FFD700;
+		font-weight: 600;
+}
+	
+	/* 暂无书评提示 */
+.no-reviews {
+		padding: 1.25rem 0.625rem;
+		text-align: center;
+		background-color: #F8F8F8;
+		border-radius: 0.375rem;
+		margin-top: 0.5rem;
+}
+.no-reviews-text {
+		font-size: 0.8125rem;
+		color: #999999;
+		line-height: 1.5;
+}
+	
+	/* 小说内容区域 */
+.novel-content-section {
+		padding: 1rem;
+		margin: 0.75rem 1rem;
+		/* background-color: #FFFFFF;
+		margin: 24rpx 32rpx;
+		border-radius: 20rpx;
+		box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.05); */
+}
+.chapter-title {
+		text-align: left;
+		margin-bottom: 1rem;
+		padding-bottom: 0.75rem;
+		border-bottom: 0.0625rem solid #F0F0F0;
+}
+.chapter-text {
+		font-size: 1.125rem;
+		color: #333333;
+		font-weight: 700;
+}
+.novel-text {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+}
+.novel-paragraph {
+		font-size: 0.9375rem;
+		color: #333333;
+		line-height: 1.8;
+		text-align: justify;
+}
+	
+	/* 底部留白 */
+.bottom-spacer { 
+		height: 3.75rem; 
+		background-color: transparent;
+}
+	
+	/* 开始阅读按钮 */
+.read-button-container {
+		padding: 1.875rem 1rem;
+		display: flex;
+		justify-content: center;
+		margin-bottom: 1.875rem;
+}
+.read-button {
+		width: 9.375rem;
+		height: 2.5rem;
+		/* background-color: #FFFFFF; */
+		border: 0.0625rem solid #E0E0E0;
+		border-radius: 1.25rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.375rem;
+		/* box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1); */
+}
+.arrow-up {
+		width: 0;
+		height: 0;
+		border-left: 0.25rem solid transparent;
+		border-right: 0.25rem solid transparent;
+		border-bottom: 0.375rem solid #333333;
+}
+.read-text {
+		font-size: 0.78125rem;
+		color: #333333;
+		font-weight: 400;
+}
+	
+	/* 加载状态样式 */
+.loading-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 2.5rem 1.25rem;
+		background-color: #F5F5F5;
+		min-height: 12.5rem;
+}
+.loading-text {
+		font-size: 0.875rem;
+		color: #666666;
+}
+	
+	/* 错误状态样式 */
+.error-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 2.5rem 1.25rem;
+		background-color: #F5F5F5;
+		min-height: 12.5rem;
+}
+.error-icon {
+		font-size: 2.5rem;
+		margin-bottom: 0.625rem;
+}
+.error-text {
+		font-size: 0.875rem;
+		color: #FF6B35;
+		text-align: center;
+		margin-bottom: 1.25rem;
+		line-height: 1.5;
+}
+.error-actions {
+		display: flex;
+		gap: 0.625rem;
+}
+.retry-button {
+		background-color: #FF69B4;
+		color: #FFFFFF;
+		border: none;
+		border-radius: 0.75rem;
+		padding: 0.5rem 1rem;
+		font-size: 0.8125rem;
+		font-weight: 600;
+}
+.retry-button:active {
+		background-color: #FF1493;
+		transform: scale(0.95);
+}

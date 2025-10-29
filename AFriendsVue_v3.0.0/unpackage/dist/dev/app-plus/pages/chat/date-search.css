@@ -1,0 +1,300 @@
+
+.date-search-page {
+		min-height: 100vh;
+		background-color: #FFFFFF;
+		display: flex;
+		flex-direction: column;
+}
+	
+	/* 状态栏 */
+.status-bar {
+		height: 1.375rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 1rem;
+		background-color: #FFFFFF;
+}
+.time {
+		font-size: 0.875rem;
+		color: #000000;
+		font-weight: 600;
+}
+.status-icons {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+}
+.signal, .wifi, .battery {
+		width: 0.75rem;
+		height: 0.75rem;
+		background-color: #000000;
+		border-radius: 0.125rem;
+}
+	
+	/* 导航栏 */
+.header {
+		height: 2.75rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 1rem;
+		border-bottom: 0.03125rem solid #F0F0F0;
+}
+.back-button {
+		width: 1.5rem;
+		height: 1.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+}
+.back-arrow {
+		width: 0;
+		height: 0;
+		border-right: 0.375rem solid #000000;
+		border-top: 0.25rem solid transparent;
+		border-bottom: 0.25rem solid transparent;
+}
+.title {
+		font-size: 1rem;
+		color: #333333;
+		font-weight: 600;
+}
+.placeholder {
+		width: 1.5rem;
+}
+	
+	/* 日期选择控件 */
+.date-controls {
+		padding: 0.75rem 1rem;
+		background-color: #F8F8F8;
+		margin: 0 1rem;
+		border-radius: 0.5rem;
+		margin-top: 0.75rem;
+}
+.year-month-row {
+		display: flex;
+		gap: 0.75rem;
+		margin-bottom: 0.5rem;
+}
+.dropdown {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+		padding: 0.375rem 0.5rem;
+		background-color: #FFFFFF;
+		border-radius: 0.375rem;
+		border: 0.03125rem solid #E0E0E0;
+}
+.dropdown-text {
+		font-size: 0.875rem;
+		color: #333333;
+		font-weight: 500;
+}
+.dropdown-arrow {
+		width: 0;
+		height: 0;
+		border-top: 0.25rem solid #666666;
+		border-left: 0.1875rem solid transparent;
+		border-right: 0.1875rem solid transparent;
+}
+.view-toggle {
+		display: flex;
+		background-color: #FFFFFF;
+		border-radius: 0.375rem;
+		padding: 0.125rem;
+		border: 0.03125rem solid #E0E0E0;
+}
+.toggle-btn {
+		flex: 1;
+		padding: 0.375rem 0;
+		text-align: center;
+		border-radius: 0.25rem;
+		transition: all 0.2s ease;
+}
+.toggle-btn.active {
+		background-color: #007AFF;
+}
+.toggle-text {
+		font-size: 0.8125rem;
+		color: #666666;
+		font-weight: 500;
+}
+.toggle-btn.active .toggle-text {
+		color: #FFFFFF;
+}
+	
+	/* 日历网格 */
+.calendar-grid {
+		padding: 1rem;
+		flex: 1;
+}
+.weekdays-row {
+		display: flex;
+		margin-bottom: 0.75rem;
+}
+.weekday {
+		flex: 1;
+		text-align: center;
+		padding: 0.5rem 0;
+}
+.weekday-text {
+		font-size: 0.8125rem;
+		color: #666666;
+		font-weight: 500;
+}
+.dates-grid {
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+		gap: 0.25rem;
+}
+.date-cell {
+		aspect-ratio: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0.375rem;
+		position: relative;
+		cursor: pointer;
+}
+.date-cell.other-month {
+		color: #CCCCCC;
+}
+.date-cell.current-month {
+		color: #333333;
+}
+.date-cell.selected {
+		background-color: #007AFF;
+		color: #FFFFFF;
+}
+.date-cell.today {
+		background-color: #F0F8FF;
+		border: 0.0625rem solid #007AFF;
+}
+.date-number {
+		font-size: 0.875rem;
+		font-weight: 500;
+}
+.selected-dot {
+		width: 0.25rem;
+		height: 0.25rem;
+		background-color: #FFFFFF;
+		border-radius: 50%;
+		margin-top: 0.125rem;
+}
+	
+	/* 年份选择弹层 */
+.year-picker-overlay {
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		background: rgba(0, 0, 0, 0.4);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 999;
+}
+.year-picker-sheet {
+		width: 15.625rem;
+		background: #FFFFFF;
+		border-radius: 0.625rem;
+		padding: 1rem;
+		box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.12);
+}
+.year-picker-content {
+		max-height: 12.5rem;
+		overflow-y: auto;
+}
+.year-range {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+}
+.year-item {
+		padding: 0.625rem;
+		text-align: center;
+		border-radius: 0.375rem;
+		transition: all 0.2s ease;
+}
+.year-item.active {
+		background-color: #007AFF;
+}
+.year-item:active {
+		background-color: #F0F0F0;
+}
+.year-item.active:active {
+		background-color: #0056CC;
+}
+.year-text {
+		font-size: 0.875rem;
+		color: #333333;
+		font-weight: 500;
+}
+.year-item.active .year-text {
+		color: #FFFFFF;
+}
+	
+	/* 月份选择弹层 */
+.month-picker-overlay {
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		background: rgba(0, 0, 0, 0.4);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 999;
+}
+.month-picker-sheet {
+		width: 15.625rem;
+		background: #FFFFFF;
+		border-radius: 0.625rem;
+		padding: 1rem;
+		box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.12);
+}
+.month-picker-content {
+		max-height: 12.5rem;
+		overflow-y: auto;
+}
+.month-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0.5rem;
+}
+.month-item {
+		padding: 0.625rem;
+		text-align: center;
+		border-radius: 0.375rem;
+		transition: all 0.2s ease;
+}
+.month-item.active {
+		background-color: #007AFF;
+}
+.month-item:active {
+		background-color: #F0F0F0;
+}
+.month-item.active:active {
+		background-color: #0056CC;
+}
+.month-text {
+		font-size: 0.8125rem;
+		color: #333333;
+		font-weight: 500;
+}
+.month-item.active .month-text {
+		color: #FFFFFF;
+}
+	
+	/* 底部指示器 */
+.home-indicator {
+		height: 0.25rem;
+		background-color: #000000;
+		border-radius: 0.125rem;
+		margin: 0.5rem auto;
+		width: 3.75rem;
+}

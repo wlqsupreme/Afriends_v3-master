@@ -1,0 +1,479 @@
+
+.gift-page { 
+		min-height: 100vh; 
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		display: flex; 
+		flex-direction: column;
+}
+
+	/* 头部 */
+.header { 
+		height: 2.75rem; 
+		display: flex; 
+		align-items: center; 
+		justify-content: space-between; 
+		padding: 0 1rem; 
+		border-bottom: 0.03125rem solid #F0F0F0; 
+		background-color: #FFFFFF;
+		position: -webkit-sticky;
+		position: sticky;
+		top: 0;
+		z-index: 100;
+}
+.back-button { 
+		width: 1.875rem; 
+		height: 1.875rem; 
+		display: flex; 
+		align-items: center; 
+		justify-content: center; 
+		background-color: #F5F5F5;
+		border-radius: 50%;
+}
+.back-button .icon {
+		width: 1rem;
+		height: 1rem;
+}
+.header-title { 
+		flex: 1; 
+		text-align: center;
+}
+.title-text { 
+		font-size: 1rem; 
+		color: #333333; 
+		font-weight: 700;
+}
+.placeholder { 
+		width: 1.875rem;
+}
+
+	/* AI 概览 */
+.ai-summary { 
+		display: flex; 
+		gap: 0.75rem; 
+		padding: 1.25rem; 
+		align-items: center; 
+		background: rgba(255, 255, 255, 0.95);
+		margin: 0.75rem;
+		border-radius: 0.625rem;
+		box-shadow: 0 0.25rem 0.78125rem rgba(0, 0, 0, 0.1);
+}
+.avatar-wrap { 
+		width: 4.375rem; 
+		height: 4.375rem; 
+		border-radius: 0.375rem; 
+		overflow: hidden; 
+		background: linear-gradient(135deg, #667eea, #764ba2);
+		box-shadow: 0 0.1875rem 0.625rem rgba(102, 126, 234, 0.3);
+		position: relative;
+		cursor: pointer;
+}
+.avatar { width: 100%; height: 100%;
+}
+.avatar-placeholder {
+		background: linear-gradient(135deg, #667eea, #764ba2);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+}
+.avatar-text {
+		font-size: 1.5rem;
+		font-weight: bold;
+		color: white;
+}
+.avatar-wrap .edit-overlay {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: rgba(0, 0, 0, 0.7);
+		color: white;
+		font-size: 0.625rem;
+		text-align: center;
+		padding: 0.125rem 0;
+		opacity: 0;
+		transition: opacity 0.3s;
+}
+.avatar-wrap:active .edit-overlay {
+		opacity: 1;
+}
+.ai-info { flex: 1; display: flex; flex-direction: column; gap: 0.375rem;
+}
+.name-row { display: flex; align-items: center; gap: 0.5rem;
+}
+.ai-name { 
+		font-size: 0.9375rem; 
+		color: #333; 
+		font-weight: 600; 
+		display: flex; 
+		align-items: center; 
+		gap: 0.25rem; 
+		cursor: pointer;
+}
+.edit-icon {
+		font-size: 0.75rem;
+		opacity: 0.7;
+		transition: opacity 0.2s;
+}
+.ai-name:active .edit-icon {
+		opacity: 1;
+}
+.perm-pill { display: flex; align-items: center; gap: 0.25rem; background: #F6F7FB; border: 0.0625rem solid #E5E7F0; border-radius: 0.625rem; padding: 0.1875rem 0.4375rem; cursor: pointer; transition: all 0.2s ease;
+}
+.perm-pill:active { background: #E8E9F0; transform: scale(0.95);
+}
+.perm-dot { width: 0.75rem; height: 0.75rem; border-radius: 0.375rem; background: #111; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.5625rem;
+}
+.perm-text { font-size: 0.6875rem; color: #333;
+}
+.level-row { display: flex; align-items: center; gap: 0.5rem;
+}
+.level-text { font-size: 0.8125rem; color: #333; font-weight: 600;
+}
+.level-up-btn { padding: 0.25rem 0.5625rem; border-radius: 0.75rem; border: 0.0625rem solid #D6E7FF; background: #EEF5FF;
+}
+.level-up-btn .btn-text { color: #0A84FF; font-size: 0.6875rem;
+}
+.progress-row { display: flex; align-items: center; gap: 0.5rem;
+}
+.progress { position: relative; height: 0.25rem; flex: 1;
+}
+.track { position: absolute; left: 0; right: 0; top: 0; bottom: 0; background: #EAEAEA; border-radius: 0.125rem;
+}
+.fill { position: absolute; left: 0; top: 0; bottom: 0; background: #0A84FF; border-radius: 0.125rem;
+}
+.thumb { position: absolute; top: 50%; width: 0.625rem; height: 0.625rem; background: #fff; border: 0.0625rem solid #0A84FF; border-radius: 0.3125rem; transform: translate(-50%, -50%);
+}
+.progress-text { font-size: 0.6875rem; color: #666;
+}
+
+	/* 任务行 */
+.task-row {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 1rem 1.25rem;
+		background: rgba(255, 255, 255, 0.95);
+		margin: 0 0.75rem 0.75rem 0.75rem;
+		border-radius: 0.625rem;
+		box-shadow: 0 0.25rem 0.78125rem rgba(0, 0, 0, 0.1);
+		cursor: pointer;
+		transition: all 0.2s ease;
+}
+.task-row:active {
+		transform: scale(0.98);
+		background: rgba(255, 255, 255, 0.9);
+}
+.task-left {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+}
+.task-icon {
+		font-size: 1.25rem;
+}
+.task-text {
+		font-size: 1rem;
+		color: #333;
+		font-weight: 600;
+}
+.task-right {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+}
+.task-count {
+		font-size: 0.8125rem;
+		color: #666;
+}
+.task-arrow {
+		font-size: 0.875rem;
+		color: #999;
+		font-weight: bold;
+}
+
+	/* 礼物列表 */
+.gift-list {
+		border-top: 0.03125rem solid #EFEFEF;
+		background: #FFFFFF;
+}
+.gift-header {
+		height: 2.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 1rem;
+		background: linear-gradient(135deg, rgba(102, 126, 234, 0.7), rgba(102, 126, 234, 0.3));
+		border-bottom: 0.03125rem solid #E8F5E8;
+}
+.header-left {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+}
+.back-arrow-svg {
+		width: 1.25rem;
+		height: 1.25rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+}
+.dropdown-arrow {
+		width: 0;
+		height: 0;
+		border-left: 0.25rem solid transparent;
+		border-right: 0.25rem solid transparent;
+		border-top: 0.375rem solid #666;
+		transition: transform 0.3s ease;
+}
+.dropdown-arrow.rotated {
+		transform: rotate(180deg);
+}
+.header-title {
+		font-size: 1rem;
+		color: #FFFFFF;
+		font-weight: 600;
+}
+.header-subtitle {
+		font-size: 0.875rem;
+		color: #FFFFFF;
+		font-weight: 500;
+}
+.gift-items {
+		padding: 0 1rem;
+		border-top: 0.03125rem solid #F0F0F0;
+}
+.gift-item {
+		height: 4.375rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 1rem;
+		border-bottom: 0.03125rem solid #F0F0F0;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		background: #FFFFFF;
+}
+.gift-item:active {
+		background-color: #F8F8F8;
+		transform: scale(0.98);
+}
+.gift-left {
+		display: flex;
+		align-items: center;
+		gap: 0.625rem;
+		flex: 1;
+}
+.gift-icon {
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 0.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+}
+	
+	/* 礼物图标样式 */
+.gift-flower {
+		background: linear-gradient(135deg, #FF6B9D, #FF8EAB);
+}
+.gift-beer {
+		background: linear-gradient(135deg, #FFA726, #FFB74D);
+}
+.gift-lollipop {
+		background: linear-gradient(135deg, #AB47BC, #BA68C8);
+}
+.gift-donut {
+		background: linear-gradient(135deg, #FF7043, #FF8A65);
+}
+.gift-chocolate {
+		background: linear-gradient(135deg, #8D6E63, #A1887F);
+}
+.gift-heart {
+		background: linear-gradient(135deg, #F44336, #EF5350);
+}
+.gift-hairband {
+		background: linear-gradient(135deg, #9C27B0, #BA68C8);
+}
+.gift-game {
+		background: linear-gradient(135deg, #3F51B5, #5C6BC0);
+}
+.gift-info {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		flex: 1;
+}
+.gift-name {
+		font-size: 0.9375rem;
+		color: #333333;
+		font-weight: 600;
+		line-height: 1.2;
+}
+.gift-description {
+		font-size: 0.75rem;
+		color: #666666;
+		line-height: 1.4;
+		max-width: 12.5rem;
+}
+.gift-right {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		flex-shrink: 0;
+}
+.gift-price {
+		font-size: 1rem;
+		color: #FF6B35;
+		font-weight: 700;
+		text-align: right;
+		min-width: 2.5rem;
+}
+.quantity-controls {
+		display: flex;
+		align-items: center;
+		gap: 0.375rem;
+		border: 0.03125rem solid #E0E0E0;
+		border-radius: 0.75rem;
+		padding: 0.125rem 0.375rem;
+		background: #F5F5F5;
+}
+.control-btn {
+		width: 1.5rem;
+		height: 1.5rem;
+		border-radius: 0.75rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.125rem;
+		color: #666;
+		cursor: pointer;
+		transition: all 0.2s ease;
+}
+.control-btn:active {
+		background: #E0E0E0;
+}
+.control-btn.disabled {
+		color: #C0C0C0;
+		cursor: not-allowed;
+}
+.quantity-display {
+		font-size: 0.875rem;
+		color: #333;
+		font-weight: 600;
+}
+
+	/* 底部购物条 */
+.cart-bar { 
+		height: 3.75rem; 
+		display: flex; 
+		align-items: center; 
+		gap: 0.625rem; 
+		padding: 0 0.75rem; 
+		background: #fff; 
+		border-top: 0.03125rem solid #F0F0F0;
+}
+.cart-icon { 
+		width: 1.5rem; 
+		height: 1.25rem; 
+		border: 0.125rem solid #111; 
+		border-top-left-radius: 0.1875rem; 
+		border-top-right-radius: 0.1875rem; 
+		border-bottom-left-radius: 0.3125rem; 
+		border-bottom-right-radius: 0.3125rem; 
+		position: relative;
+}
+.cart-total { 
+		flex: 1; 
+		font-size: 0.875rem; 
+		color: #333;
+}
+.checkout-btn { 
+		height: 2.5rem; 
+		padding: 0 1.125rem; 
+		border-radius: 1.25rem; 
+		background: #FF6B6B; 
+		display: flex; 
+		align-items: center; 
+		justify-content: center; 
+		transition: all 0.2s ease;
+}
+.checkout-btn:active { 
+		transform: scale(0.95); 
+		background: #FF5252;
+}
+.checkout-text { 
+		font-size: 0.875rem; 
+		color: #fff; 
+		font-weight: 600;
+}
+
+	/* 加载状态样式 */
+.loading-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 1.875rem 0;
+		gap: 0.625rem;
+}
+.loading-spinner {
+		width: 1.875rem;
+		height: 1.875rem;
+		border: 0.125rem solid #f3f3f3;
+		border-top: 0.125rem solid #667eea;
+		border-radius: 50%;
+		animation: spin 1s linear infinite;
+}
+@keyframes spin {
+0% { transform: rotate(0deg);
+}
+100% { transform: rotate(360deg);
+}
+}
+.loading-text {
+		font-size: 0.875rem;
+		color: #666;
+}
+	
+	/* 错误状态样式 */
+.error-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 1.875rem 0;
+		gap: 0.625rem;
+}
+.error-icon {
+		font-size: 2.5rem;
+		color: #ff6b6b;
+}
+.error-text {
+		font-size: 0.875rem;
+		color: #666;
+		text-align: center;
+}
+.retry-button {
+		padding: 0.5rem 1rem;
+		background: #667eea;
+		color: white;
+		border: none;
+		border-radius: 0.75rem;
+		font-size: 0.8125rem;
+		cursor: pointer;
+		transition: all 0.2s ease;
+}
+.retry-button:active {
+		transform: scale(0.95);
+		background: #5a6fd8;
+}
+.retry-text {
+		color: white;
+		font-size: 0.8125rem;
+}
+
+	/* 底部指示器 */
+.home-indicator { height: 0.25rem; background: #000; border-radius: 0.125rem; width: 3.75rem; margin: 0.5rem auto;
+}
