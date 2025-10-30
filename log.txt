@@ -24,3 +24,20 @@ backend/src/main/java/Afriends_v3/config/RedisConfig.java：RedisTemplate 配置
 backend/src/main/java/Afriends_v3/service/common/RedisService.java：Redis 通用服务
 backend/src/main/java/Afriends_v3/controller/RedisTestController.java：连通性自检接口
 backend/src/main/resources/application-redis.properties.example：本地配置示例
+
+修改的文件
+1. 新增文件
+backend/src/main/java/Afriends_v3/service/common/DistributedLockService.java
+核心分布式锁服务
+包含 tryLock、tryLockWithRetry、unlock、executeWithLock
+backend/src/main/java/Afriends_v3/controller/DistributedLockTestController.java
+测试控制器
+提供 4 个测试接口，验证功能
+backend/DISTRIBUTED_LOCK_IMPLEMENTATION.md
+实现文档
+说明技术细节与使用示例
+2. 修改的文件
+backend/src/main/java/Afriends_v3/service/UserEntityService_wlq.java
+新增 DistributedLockService 依赖注入
+新增示例：registerUserWithLock()（自动加锁）
+新增示例：registerUserWithManualLock()（手动加锁）
