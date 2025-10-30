@@ -88,6 +88,24 @@
             <artifactId>mybatis</artifactId>
             <version>3.5.16</version>
         </dependency>
+
+        <!-- Redis 集成：Spring Data Redis（默认使用 Lettuce 客户端） -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <!-- Spring 缓存抽象（用于 @Cacheable 等注解） -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+
+        <!-- JSON 序列化（用于 RedisTemplate 的通用 JSON 序列化器） -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
     </dependencies>
 
     <!-- 可选：如果你的镜像有延迟，临时把 mybatis/jsqlparser 锁到已经能拉到的版本

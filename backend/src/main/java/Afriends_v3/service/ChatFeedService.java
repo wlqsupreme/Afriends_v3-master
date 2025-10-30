@@ -3,6 +3,7 @@ package Afriends_v3.service;
 import Afriends_v3.entity.*;
 import Afriends_v3.mapper.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import jakarta.annotation.PostConstruct;
@@ -65,12 +66,20 @@ public class ChatFeedService {
     // 缓存最后更新时间
     private long lastCacheUpdateTime = 0;
     private static final long CACHE_REFRESH_INTERVAL = 5 * 60 * 1000; // 5分钟刷新一次缓存
+
+    // 是否在应用启动时初始化缓存（通过配置开关控制，避免因数据库异常影响服务可用）
+    @Value("${app.cache.init-on-startup:false}")
+    private boolean initCacheOnStartup;
     
     /**
      * 初始化缓存
      */
     @PostConstruct
     public void initCache() {
+        if (!initCacheOnStartup) {
+            System.out.println("ChatFeedService: 跳过启动期缓存初始化（app.cache.init-on-startup=false）");
+            return;
+        }
         System.out.println("ChatFeedService: 开始初始化缓存...");
         refreshAllCache();
         System.out.println("ChatFeedService: 缓存初始化完成");

@@ -1,0 +1,26 @@
+C:\Users\王柳清>docker pull redis
+Using default tag: latest
+latest: Pulling from library/redis
+abe1fea37542: Pull complete
+3db098501f01: Pull complete
+ca19d868f352: Pull complete
+b89fb5fc7ff7: Pull complete
+4b4668b306bc: Pull complete
+4f4fb700ef54: Pull complete
+71e796aaa0ba: Pull complete
+Digest: sha256:4521b581dbddea6e7d81f8fe95ede93f5648aaa66a9dacd581611bf6fe7527bd
+Status: Downloaded newer image for redis:latest
+docker.io/library/redis:latest
+
+C:\Users\王柳清>docker run -d --name 567-redis -p 6379:6379 redis redis-server --requirepass 123456
+ed0c817670269a65e54928771b23c6593db991aec4f3c8fb800910e32f91c770
+
+C:\Users\王柳清>
+
+（重要文件）
+backend/pom.xml：添加 Redis 与缓存依赖
+backend/src/main/java/Afriends_v3/AfriendsV3Application.java：启用缓存注解
+backend/src/main/java/Afriends_v3/config/RedisConfig.java：RedisTemplate 配置
+backend/src/main/java/Afriends_v3/service/common/RedisService.java：Redis 通用服务
+backend/src/main/java/Afriends_v3/controller/RedisTestController.java：连通性自检接口
+backend/src/main/resources/application-redis.properties.example：本地配置示例

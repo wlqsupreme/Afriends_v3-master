@@ -1,0 +1,22 @@
+# ==========================
+# Redis 连接示例配置（示例文件）
+# 使用方式：复制这些配置到你本地的 application.properties 或者新建 application-local.properties 并通过 --spring.profiles.active=local 启用
+# ==========================
+
+# Redis 基本连接
+spring.data.redis.host=127.0.0.1
+spring.data.redis.port=6379
+spring.data.redis.password=123456
+spring.data.redis.database=0
+
+# 连接池（Lettuce）可选配置
+spring.data.redis.lettuce.pool.max-active=16
+spring.data.redis.lettuce.pool.max-idle=8
+spring.data.redis.lettuce.pool.min-idle=0
+spring.data.redis.lettuce.pool.max-wait=5s
+
+# 使用 Redis 作为 Spring Cache 默认缓存实现（可选）
+spring.cache.type=redis
+
+
+
