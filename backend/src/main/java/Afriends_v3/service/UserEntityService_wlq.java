@@ -243,6 +243,170 @@ public class UserEntityService_wlq {
     }
 
     // ============================
+    // 正式用户注册方法
+    // ============================
+
+    /**
+     * 正式用户注册方法（写入数据库）
+     * @param username 用户名
+     * @param password 密码
+     * @param phone 手机号（可选）
+     * @return 注册结果
+     */
+    public Map<String, Object> registerUser(String username, String password, String phone) {
+        Map<String, Object> result = new HashMap<>();
+        
+        try {
+            System.out.println("开始注册用户: username=" + username);
+            
+            // 1. 检查用户名是否已存在（从数据库查询）
+            com.baomidou.mybatisplus.core.conditions.query.QueryWrapper<UserBase_wlq> queryWrapper = 
+                new com.baomidou.mybatisplus.core.conditions.query.QueryWrapper<>();
+            queryWrapper.eq("login_account", username);
+            Long count = userBaseMapper.selectCount(queryWrapper);
+            
+            if (count > 0) {
+                result.put("success", false);
+                result.put("message", "用户名已被注册");
+                result.put("code", 400);
+                return result;
+            }
+            
+            // 2. 生成新的用户ID（从1200000开始）
+            Long newUserId = generateNewUserId();
+            
+            // 3. 创建新用户实体
+            UserBase_wlq newUser = new UserBase_wlq();
+            newUser.setUserId(newUserId);
+            newUser.setLoginAccount(username);
+            newUser.setPasswordHash(hashPassword(password)); // 简单hash，实际应使用BCrypt等
+            if (phone != null && !phone.trim().isEmpty()) {
+                newUser.setLoginTelAccount(phone);
+            }
+            newUser.setCreatedAt(new java.sql.Timestamp(System.currentTimeMillis()));
+            newUser.setLastActive(new java.sql.Timestamp(System.currentTimeMillis()));
+            newUser.setUserKind("真人"); // 默认为真人用户
+            
+            // 4. 保存到数据库
+            int insertCount = userBaseMapper.insert(newUser);
+            
+            if (insertCount > 0) {
+                // 5. 重新加载内存缓存（可选）
+                // 注意：实际场景中如果缓存已加载，建议手动添加而非全部重载
+                // 这里暂时跳过缓存更新，避免影响性能
+                
+                result.put("success", true);
+                result.put("message", "注册成功");
+                result.put("code", 200);
+                result.put("userId", newUserId);
+                result.put("username", username);
+                System.out.println("用户注册成功: userId=" + newUserId + ", username=" + username);
+            } else {
+                result.put("success", false);
+                result.put("message", "注册失败，数据库插入失败");
+                result.put("code", 500);
+            }
+            
+        } catch (Exception e) {
+            System.err.println("注册过程中发生异常: " + e.getMessage());
+            e.printStackTrace();
+            result.put("success", false);
+            result.put("message", "注册失败: " + e.getMessage());
+            result.put("code", 500);
+        }
+        
+        return result;
+    }
+
+    /**
+     * 检查用户名是否可用
+     */
+    public boolean isUsernameAvailable(String username) {
+        try {
+            com.baomidou.mybatisplus.core.conditions.query.QueryWrapper<UserBase_wlq> queryWrapper = 
+                new com.baomidou.mybatisplus.core.conditions.query.QueryWrapper<>();
+            queryWrapper.eq("login_account", username);
+            Long count = userBaseMapper.selectCount(queryWrapper);
+            return count == 0;
+        } catch (Exception e) {
+            System.err.println("检查用户名可用性失败: " + e.getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * 生成新的用户ID（从1200000开始）
+     * 使用原生SQL避免实体映射问题
+     */
+    private Long generateNewUserId() {
+        try {
+            // 方案1：查询 >= 1200000 的最大ID
+            Long maxIdAbove1200000 = userBaseMapper.selectObjs(
+                new com.baomidou.mybatisplus.core.conditions.query.QueryWrapper<UserBase_wlq>()
+                    .select("MAX(user_id) as maxId")
+                    .ge("user_id", 1200000L)
+            ).stream()
+             .filter(obj -> obj != null)
+             .map(obj -> Long.valueOf(obj.toString()))
+             .findFirst()
+             .orElse(null);
+            
+            if (maxIdAbove1200000 != null && maxIdAbove1200000 >= 1200000L) {
+                Long newId = maxIdAbove1200000 + 1;
+                System.out.println("查询到 >=1200000 的最大用户ID: " + maxIdAbove1200000 + ", 新ID将为: " + newId);
+                return newId;
+            }
+            
+            // 方案2：检查数据库是否有任何记录
+            Long globalMaxId = userBaseMapper.selectObjs(
+                new com.baomidou.mybatisplus.core.conditions.query.QueryWrapper<UserBase_wlq>()
+                    .select("MAX(user_id) as maxId")
+            ).stream()
+             .filter(obj -> obj != null)
+             .map(obj -> Long.valueOf(obj.toString()))
+             .findFirst()
+             .orElse(null);
+            
+            if (globalMaxId != null && globalMaxId >= 1200000L) {
+                // 全局最大ID已经 >= 1200000，在其基础上+1
+                Long newId = globalMaxId + 1;
+                System.out.println("全局最大用户ID: " + globalMaxId + " (>=1200000), 新ID将为: " + newId);
+                return newId;
+            }
+            
+            // 没有找到 >= 1200000 的记录，使用起始值
+            System.out.println("未找到 >=1200000 的用户ID，全局最大ID为: " + globalMaxId + ", 使用起始值: 1200000");
+            return 1200000L;
+            
+        } catch (Exception e) {
+            System.err.println("生成用户ID失败，使用默认起始值: " + e.getMessage());
+            e.printStackTrace();
+            return 1200000L;
+        }
+    }
+
+    /**
+     * 简单密码hash（实际生产环境应使用BCrypt等安全算法）
+     */
+    private String hashPassword(String password) {
+        // 这里使用简单的hash作为演示，实际应使用BCrypt、Argon2等
+        try {
+            java.security.MessageDigest md = java.security.MessageDigest.getInstance("SHA-256");
+            byte[] hash = md.digest(password.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) hexString.append('0');
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (Exception e) {
+            System.err.println("密码hash失败: " + e.getMessage());
+            return password; // 降级方案（不推荐）
+        }
+    }
+
+    // ============================
     // 分布式锁示例方法：用户注册
     // ============================
 

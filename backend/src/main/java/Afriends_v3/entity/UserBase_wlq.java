@@ -18,14 +18,34 @@ import lombok.AllArgsConstructor;
 public class UserBase_wlq {
     @TableId(value = "user_id", type = IdType.INPUT)
     private Long userId;
+    
+    @TableField("login_tel_account")
     private String loginTelAccount;
+    
+    @TableField("login_account")
     private String loginAccount;
+    
+    @TableField("login_wechat_account")
     private String loginWechatAccount;
+    
+    @TableField("login_qq_account")
     private String loginQqAccount;
+    
+    @TableField("bound_douyin_account")
     private String boundDouyinAccount;
+    
+    @TableField("machine_codes")
     private String machineCodes;
+    
+    @TableField("password_hash")
     private String passwordHash;
+    
+    @TableField("created_at")
     private Timestamp createdAt;
+    
+    @TableField("last_active")
     private Timestamp lastActive;
+    
+    @TableField("user_kind")
     private String userKind;
 }

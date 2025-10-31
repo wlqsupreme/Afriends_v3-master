@@ -41,3 +41,131 @@ backend/src/main/java/Afriends_v3/service/UserEntityService_wlq.java
 新增 DistributedLockService 依赖注入
 新增示例：registerUserWithLock()（自动加锁）
 新增示例：registerUserWithManualLock()（手动加锁）
+
+ 新建控制器：UserRegisterController.java
+路径：backend/src/main/java/Afriends_v3/controller/UserRegisterController.java
+提供两个接口：
+POST /api/user/register - 用户注册
+GET /api/user/check-username - 检查用户名是否可用
+2. 在 UserEntityService_wlq.java 中添加真实注册逻辑
+registerUser() - 真正写入数据库的注册方法
+isUsernameAvailable() - 检查用户名可用性
+generateNewUserId() - 从 1200000 开始生成用户ID
+hashPassword() - SHA-256密码加密
+
+
+
+
+# 快速结论（先看这一段）
+
+你后台看到的 `1755141990650938` 不是数据库自增 `AUTO_INCREMENT` 的值，而很可能来自**应用层的 ID 生成器或缓存（Redis/内存/配置）**。常见原因有：
+
+* 应用没有用数据库自增 ID，而用分布式 ID 生成器（Snowflake/Leaf/Uid/自研）——这类生成器会产出远大于 DB 当前最大自增值的“全局唯一”长整型 ID。
+* 或者应用在启动/运行时读到了一个被误置/遗留的 Redis key / 配置值（比如把 sequence 初始值设置成了 1755141990650937），随后每次注册都在该值上 +1。
+* 也可能是查询的“最大 id”来源错了（查了别的表、别的库、或用了缓存值），而不是从你刚检查的那张表里查的真实最大值。
+
+下面给出排查步骤、快速修复建议和预防措施（按优先级）。
+
+---
+
+# 排查步骤（按序执行）
+
+1. **定位代码里生成/获取用户 id 的地方**
+   在代码中搜索关键词：`idWorker`、`Snowflake`、`getNextId`、`nextId`、`incr`、`Redis`、`sequence`、`AtomicLong`、`UID` 等。确认注册流程里到底是哪一部分负责产生 `userId`。
+
+2. **看应用是否使用分布式 ID 生成器**
+
+   * 若使用 Snowflake/leaf/uid：通常配置会有 `workerId`、`datacenterId`、`epoch` 等，ID 值基于时间戳位移，输出值通常很大（类似你看到的样子）。
+   * 打印/查看生成器初始化日志（是否在启动时设置了某个基值）或栈内调用位置。
+
+3. **检查 Redis（或其它缓存）相关 key**
+   在运行机器上用 redis-cli（或在代码中打印）检查可能的 sequence key：
+
+   ```bash
+   redis-cli keys "*user*id*"      # 找相关 key
+   redis-cli get myapp:userid_seq  # 举例
+   redis-cli type <key>
+   redis-cli ttl <key>
+   ```
+
+   如果某个 key 值就是 `1755141990650937`，说明是 Redis 的序列被误置/被初始化过高。
+
+4. **确认你查的是对的 DB / 表 / 环境**
+   在 MySQL 上执行：
+
+   ```sql
+   SELECT MAX(id) FROM your_user_table;
+   SHOW CREATE TABLE your_user_table;
+   ```
+
+   并查看 `AUTO_INCREMENT`（`SHOW TABLE STATUS LIKE 'your_user_table'`）。确认没有查询错库、错表或是读了另一套数据（如测试/生产不一致）。
+
+5. **查看启动/迁移脚本、数据迁移历史**
+   查是否有某次导入或迁移脚本曾把序列或生成器种子设为一个很大的数字。
+
+6. **审查注册前后 DB 写入的实际值**
+   在注册成功日志后，直接在 DB 查刚插入的那条记录的 id，确认是哪个来源写入 DB（应用写入的 id 与日志一致吗？）。
+
+---
+
+# 快速修复（安全优先）
+
+**如果确认是 Redis key 被误置且你要把序列回退到 DB 最大值：**
+
+1. 先 **暂停注册接口**（或把注册路由临时下线），避免并发写入冲突。
+
+2. 计算 DB 的真实最大 id（`max_id_db`）：
+
+   ```sql
+   SELECT MAX(id) AS max_id FROM your_user_table;
+   ```
+
+3. 将 Redis 的序列值设为 `max_id_db`（或 `max_id_db + 1000` 以避免冲突），例如 Redis key 是 `myapp:userid_seq`：
+
+   ```bash
+   redis-cli set myapp:userid_seq <max_id_db>
+   # 或使用 SETNX 如果要保护已有值
+   ```
+
+   如果生成器用的是 `INCR` 语义，直接 `SET` 合适；如果是 Snowflake 类生成器，不适用 Redis 重置（见下）。
+
+4. 恢复注册并观察日志、并用脚本模拟并发去验证不会生成重复 id。
+
+**如果使用 Snowflake/时间戳类生成器：**
+
+* 不要随便“把 Snowflake 回退”；Snowflake 的高位通常是时间戳，如果机器时钟或 epoch 配置被改动、或 workerId 初始化错了，会导致 ID 跨越和不连续。排查 generator 的 `epoch`/`workerId` 配置并修正。可考虑把 DB 的 `AUTO_INCREMENT` 与生成器的最小值对齐（将生成器的输出确保大于 DB 已有 max），或改用 DB 自增 + 全局映射策略。
+
+---
+
+# 长期建议 / 最佳实践
+
+1. **明确“ID 的权威来源”**：要么数据库 `AUTO_INCREMENT` 做唯一 ID，要么应用层统一使用分布式 ID 生成器并把它当作“唯一 id 的唯一来源”，不要混用而不对齐。
+2. **初始化/迁移脚本要设置序列**：如果从 DB 切换到分布式 generator 或引入 Redis 序列，务必在切换时把序列初始值设置为 DB 中的 `MAX(id)` 后再启用。
+3. **加唯一约束**：数据库表对 `id` 应有主键/唯一约束，避免应用逻辑 bug 导致重复写入。
+4. **把序列值存到持久化位置并有审计**：比如把 Redis key 的修改操作写入运维日志，或在配置管理里记录一次性操作的原因和时间。
+5. **启动自检**：应用启动时可以检查“生成器下限”是否小于 DB 的 `MAX(id)`，若小则报警或自动调整（谨慎自动调整，需设计好竞态处理）。
+
+---
+
+# 常见场景举例（对照你看到的现象）
+
+* 场景 A（最可能）：项目用 Redis 的自增序列或分布式 ID。Redis key 曾在某次测试/迁移中被设成 `1755141990650937`，导致应用每次注册在该值上 `+1`，日志显示连续大数字，但 DB 原有数据只有 1.2M。
+* 场景 B：使用 Snowflake，日志显示的 ID 本来就是 Snowflake 生成的全局 ID，不应与 DB 自增做直接比较（这是设计选择）。
+* 场景 C（少见）：程序查询错了库/表或连接到了另一套环境（例如以前的生产环境），读到别处的最大 ID。
+
+---
+
+# 给你的即时操作清单（把握今晚即可做的）
+
+1. 在代码仓库里全局搜索 `INCR`、`redis`、`Snowflake`、`IdWorker` 等，确认 ID 来源。
+2. 用 `redis-cli` 查看可能的序列 key 值。
+3. 在 MySQL 上执行 `SELECT MAX(id) FROM your_user_table;` 并确认 `AUTO_INCREMENT`。
+4. 根据上面结果，按“快速修复”步骤重置 Redis 或修正生成器配置（先暂停注册）。
+5. 检查是否有重复 id / 约束异常日志（若存在，要做数据清理和补救计划）。
+
+---
+
+如果你愿意，我可以：
+
+* 根据你贴出的一段注册代码帮你定位 `id` 从哪里来的（把注册相关的 Java/配置片段贴过来），或者
+* 给你一段安全的 Redis 重置脚本与并发验证脚本（shell + SQL）供你执行。
